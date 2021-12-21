@@ -1,20 +1,9 @@
-<button class="btn btn-secondary px-3 m-3 rounded-pill" (click)="routeToHome()"><i class="fas fa-arrow-left "></i></button>
+<button class="m-2 px-4 py-2 btn btn-outline-dark rounded-pill" (click)="routeToHome()">Back</button>
 
 <div class="container border border-1 rounded my-4">
     <img src="{{image.src}}" class="img-fluid w-100 mb-3">
     <h2 class="p-2 text-center bg-light border rounded ">{{image.title}}</h2>
-    <div class="row row-cols-2 p-2">
-        <div class="col text-center bg-light py-2 rounded">
-            <button *ngIf="!likeClick" class="btn" (click)="liked()">
-                <i class="far fa-heart fa-2x"></i>
-            </button>
-            <button *ngIf="likeClick" class="btn" (click)="liked()">
-                <i class="fas fa-heart fa-2x text-danger"></i>
-            </button>
-            <h5>Like</h5>
-        </div>
-        <div class="col mx-auto btn bg-light" (click)="buttonComment()"><i class="far fa-comment fa-2x"></i> <h5>Comment</h5></div>
-    </div>
+    <div class="col mx-auto btn bg-light" (click)="buttonComment()"> <h4>Give Feddback :)</h4></div>
     <div *ngIf="commentClick && !submitted" class="py-2 px-4 border rounded border-secondary bg-light">
         <form #ref="ngForm" (ngSubmit)="ref.form.valid && submitComment(ref)">
             <div class="row my-2">
@@ -32,7 +21,7 @@
             <p *ngIf="ref.submitted && commentDescription.errors?.required" class="text-danger">Comment cannot be empty</p>
             <div class="text-center py-2">
                 <button type="submit" class='btn btn-primary rounded-pill mx-4'>Submit</button>
-                <button class="btn btn-danger rounded-pill mx-4" (click)="cancel()"><i class="fas fa-times text-white me-2"></i>Cancel</button>
+                <button class="btn btn-danger rounded-pill mx-4" (click)="cancel()">Cancel</button>
             </div>
         </form>
     </div>

@@ -23,18 +23,12 @@ export class ImageDisplayComponent implements OnInit {
     )
     this.commentClick = false;
     this.submitted = false;
-    this.likeClick = false;
   }
 
   image;
   id;
   submitted;
-  commentClick ;
-  likeClick;
-
-  liked(){
-    this.likeClick = !this.likeClick;
-  }
+  commentClick 
 
   buttonComment(){
     this.commentClick = true;
