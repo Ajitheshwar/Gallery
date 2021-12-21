@@ -1,0 +1,24 @@
+/* relevant styles */
+.img__wrap {
+  padding:  1;
+  }
+  
+  .img__description {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(46, 45, 45, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+  
+    /* transition effect.*/
+    transition: opacity .2s, visibility .2s;
+  }
+  
+  .img__wrap:hover .img__description {
+    visibility: visible;
+    opacity: 1;
+  }

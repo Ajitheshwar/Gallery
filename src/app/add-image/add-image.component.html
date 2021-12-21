@@ -1,0 +1,44 @@
+<button class="btn btn-secondary px-3 m-3 rounded-pill" (click)="routeToAdmin()"><i class="fas fa-arrow-left "></i></button>
+
+<div class="row mb-5 ">
+    <div class="col-1 col-md-2 col-lg-3"></div> 
+    <div class="col-10 col-md-8 col-lg-6 border rounded p-5 ">
+      <form #ref="ngForm" (ngSubmit)="onSubmit(ref)">
+          <div class="row py-2">
+            <div class=" col-12 center mb-5">
+                <div class="form-input p-2">
+                    <div *ngIf="(src=='...')" class="text-center text-secondary py-5"><h3>Image Preview</h3></div>
+                    <img *ngIf="(src!='...')" src={{src}} alt="Image Preview">
+                </div>
+              </div> 
+              <div class="col-12 col-sm-5">
+                  <label for="image" class="form-label"><h5>Upload Image</h5></label>
+              </div>
+              <div class="col-12 col-sm-7">
+                  <input type="file" id="image" name="image" class="form-control" required #refImage="ngModel" ngModel (change)="onselectFile($event)">
+                  <p class="text-danger" *ngIf="isSubmitted&&refImage.errors?.required" >*Upload Image File</p>  
+                </div>
+          </div>
+          
+          <div class="row mb-3 py-2">
+              <div class="col-12 col-sm-5">
+                  <label for="imageTitle" class="form-label"><h5>Title</h5></label>
+              </div>
+              <div class="col-12 col-sm-7">
+                  <input type="text" id="imageTitle" name="imageTitle" class="form-control" required #refImageTitle="ngModel" ngModel>
+                  <p class="text-danger" *ngIf="isSubmitted&&refImageTitle.errors?.required" >*Title is required</p>  
+                </div>
+          </div>
+          
+          <div class="row mb-3 py-2">
+              <label for="imageDescription" class="form-label"><h5>Description</h5></label>
+              <textarea id="imageDescription" name="imageDescription" class="form-control px-5" cols="30" rows="3" ngModel requried #refImageDescription="ngModel"></textarea>
+              <p class="text-danger" *ngIf="isSubmitted&&refImageDescription.errors?.required" >*Say something about picture</p>  
+            </div>
+    
+          <button type="submit" class="d-block mx-auto  btn btn-dark">Upload</button>
+      </form>
+    </div>
+    <div class="col-1 col-md-2 col-lg-3"></div>
+  </div>
+  

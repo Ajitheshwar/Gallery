@@ -1,0 +1,15 @@
+<div class="p-4 g-2 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <div class="col card ">
+      <button class=" h-100 bg-light btn rounded p-5 " (click)="routeToAdd()">
+        <i class="fas fa-camera fa-5x text-secondary  mx-auto my-auto"></i>
+      </button>
+    </div>
+    <div class="col card " *ngFor="let image of imageDetailsList">
+      <button class="btn" (click)="routeToAdminImage(image.key)">
+        <div class=" h-100 img__wrap">
+          <img class="img-fluid my-auto" src={{image.src}}>
+          <span class="rounded-top py-2 text-center img__description">{{image.title}}</span>
+        </div>
+      </button>
+    </div>
+  </div>
