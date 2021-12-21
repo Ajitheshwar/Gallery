@@ -11,19 +11,17 @@
                 <div class="col-5 "><h2 class="ps-2 my-auto pt-1"> Title : </h2></div>
                 <div class="col-7 py-2 my-auto"><h4> {{image.title}}</h4></div>
             </div>
-            <div class="mx-2 py-2 text-center bg-light border rounded px-3 my-4">
-              <button class="btn p-0" type="button" data-bs-toggle="modal" data-bs-target="#Backdrop"><h3>Comments</h3></button>
-            </div>
+            <button class="col bg-light btn d-block mx-auto" type="button" data-bs-toggle="modal" data-bs-target="#Backdrop"><h3>Comments</h3></button>
             <h3 class="ps-2 py-2"> Description : </h3>
             <textarea *ngIf="e" name="description" class="form-control px-5" cols="30" rows="3" ngModel requried></textarea>
             <div *ngIf="!e" class="border border-secodary p-2 rounded mb-5">
                 {{image.description}}
             </div>
             <div class=" row d-flex justify-content-around p-2 my-4 ">
-                <div *ngIf="e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; left :0"><button type="submit" class="btn btn-success rounded-pill">Confirm</button></div>
-                <div *ngIf="!e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; left :0"><button class="btn btn-dark rounded-pill" (click)="edit()">Edit</button></div>
-                <div *ngIf="e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; right :0"><button class="btn btn-danger rounded-pill" (click)="cancel()">Cancel</button></div>
-                <div *ngIf="!e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0 ;right : 0"><button class="btn btn-danger rounded-pill " (click)="delete()">Delete</button></div>
+                <div *ngIf="e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; left :0"><button type="submit" class="btn btn-success rounded-pill py-2 px-4">Confirm</button></div>
+                <div *ngIf="!e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; left :0"><button class="btn btn-dark rounded-pill py-2 px-4" (click)="edit()">Edit</button></div>
+                <div *ngIf="e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0; right :0"><button class="btn btn-danger rounded-pill py-2 px-4" (click)="cancel()">Cancel</button></div>
+                <div *ngIf="!e" class='col-6 text-white text-center mb-2' style="position: absolute ; bottom : 0 ;right : 0"><button class="btn btn-danger rounded-pill py-2 px-4" (click)="delete()">Delete</button></div>
             </div>
         </form>
         </div>

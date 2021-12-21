@@ -3,7 +3,7 @@
 <div class="container border border-1 rounded my-4">
     <img src="{{image.src}}" class="img-fluid w-100 mb-3">
     <h2 class="p-2 text-center bg-light border rounded ">{{image.title}}</h2>
-    <div class="col mx-auto btn bg-light" (click)="buttonComment()"> <h4>Give Feddback :)</h4></div>
+    <div *ngIf="!submitted" class="col d-block mx-auto btn bg-light" (click)="buttonComment()"> <h4>Give Feddback :)</h4></div>
     <div *ngIf="commentClick && !submitted" class="py-2 px-4 border rounded border-secondary bg-light">
         <form #ref="ngForm" (ngSubmit)="ref.form.valid && submitComment(ref)">
             <div class="row my-2">
