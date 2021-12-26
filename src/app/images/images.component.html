@@ -1,6 +1,6 @@
 <button *ngIf="login" class="m-2 px-4 py-2 btn btn-outline-dark rounded-pill d-block ms-auto" (click)="navigateToAdmin()"> Move to Admin </button>
 
-<div class="p-4 g-2 row row-cols-1 row-cols-md-2 ">
+<div class="p-4 g-2 row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
     <div class="col card " *ngFor="let image of imageDetailsList">
       <button class="btn" (click)="routeToImage(image.key)">
         <div class=" h-100 img__wrap">

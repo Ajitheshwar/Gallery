@@ -1,0 +1,18 @@
+.xyz {
+    margin: 0;
+}
+
+@media screen and (min-width : 500px ) and (max-width: 1000px) {
+  .xyz {
+    margin-left: 10% ;
+    margin-right: 10% ;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+    .xyz {
+      margin-left: 15% ;
+      margin-right: 15% ;
+    }
+  }
