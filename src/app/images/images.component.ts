@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,9 +9,12 @@ import { DataService } from '../data.service';
 })
 export class ImagesComponent implements OnInit {
 
-  constructor(private router : Router, private ds : DataService) { }
+  constructor(private router : Router, private ds : DataService, private ar : ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.url=this.ar.snapshot.url[0].path
+    this.ds.initialiseImages(this.url)
     this.ds.imageDetailsList.snapshotChanges().subscribe(
       list => {
         this.imageDetailsList=[]
@@ -32,6 +35,7 @@ export class ImagesComponent implements OnInit {
     }
   }
 
+  url 
   login
   imageDetailsList : any[];
 
@@ -40,7 +44,7 @@ export class ImagesComponent implements OnInit {
     this.router.navigateByUrl("/admin")
   }
   routeToImage(id){
-    this.router.navigateByUrl('/'+id);
+    this.router.navigateByUrl(`${this.url}/${id}`);
   }
 
 }

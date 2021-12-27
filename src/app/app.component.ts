@@ -20,9 +20,6 @@ export class AppComponent implements OnInit{
     {
       this.login=true;
     }
-
-    this.ds.initialiseImages();
-
   }
 
   login 

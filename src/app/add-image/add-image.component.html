@@ -6,19 +6,32 @@
       <form #ref="ngForm" (ngSubmit)="onSubmit(ref)">
           <div class="row py-2">
             <div class=" col-12 center mb-5">
-                <div class="form-input p-2">
-                    <div *ngIf="(src=='...')" class="text-center text-secondary py-5"><h3>Image Preview</h3></div>
-                    <img *ngIf="(src!='...')" src={{src}} alt="Image Preview">
-                </div>
-              </div> 
-              <div class="col-12 col-sm-5">
-                  <label for="image" class="form-label"><h5>Upload Image</h5></label>
+              <div class="form-input p-2">
+                  <div *ngIf="(src=='...')" class="text-center text-secondary py-5"><h3>Image Preview</h3></div>
+                  <img *ngIf="(src!='...')" src={{src}} alt="Image Preview">
               </div>
-              <div class="col-12 col-sm-7">
-                  <input type="file" id="image" name="image" class="form-control" required #refImage="ngModel" ngModel (change)="onselectFile($event)">
-                  <p class="text-danger" *ngIf="isSubmitted&&refImage.errors?.required" >*Upload Image File</p>  
-                </div>
+            </div> 
+            <div class="col-12 col-sm-5">
+                  <label for="image" class="form-label"><h5>Upload Image</h5></label>
+            </div>
+            <div class="col-12 col-sm-7">
+              <input type="file" id="image" name="image" class="form-control" required #refImage="ngModel" ngModel (change)="onselectFile($event)">
+              <p class="text-danger" *ngIf="isSubmitted&&refImage.errors?.required" >*Upload Image File</p>  
+            </div>
           </div>
+          
+          <h5> Upload To :</h5>
+          <div class="row my-2">
+            <div class="col-6 form-check ps-5">
+                <input class="form-check-input" name="UploadTo" type="radio" value="arts" id="Arts" ngModel #refUploadTo="ngModel"  required>
+                <label class="form-check-label" for="Arts">Arts</label>
+            </div>
+            <div class="col-6 form-check ps-5">
+                <input class="form-check-input" name="UploadTo" type="radio" value="images" id="Images" ngModel #refUploadTo="ngModel" required>
+                <label class="form-check-label" for="Images">Images</label>
+            </div>
+          </div>
+          <p class="text-danger" *ngIf="isSubmitted&&refUploadTo.errors?.required" >*Select choice</p>  
           
           <div class="row mb-3 py-2">
               <div class="col-12 col-sm-5">

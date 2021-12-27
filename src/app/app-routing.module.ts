@@ -11,7 +11,9 @@ const routes: Routes = [
   {path : "admin/:id" ,component : AdminImageDisplayComponent},
   {path : "add", component : AddImageComponent},
   {path : "images", component : ImagesComponent},
-  {path : ":id" ,component : ImageDisplayComponent},
+  {path : "images/:id" ,component : ImageDisplayComponent},
+  {path : "arts", component : ImagesComponent},
+  {path : "arts/:id" ,component : ImageDisplayComponent},
 ];
 
 @NgModule({

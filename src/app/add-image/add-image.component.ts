@@ -53,7 +53,7 @@ export class AddImageComponent implements OnInit {
     {
       this.image.title=ref.value.imageTitle;
       this.image.description = ref.value.imageDescription;
-      await this.ds.uploadImage(this.image);
+      await this.ds.uploadImage(this.image,ref.value.UploadTo);
       this.isSubmitted = false;
       alert("Image Added Successfully!!!")
     }

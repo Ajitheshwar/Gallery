@@ -15,6 +15,21 @@ export class AdminComponent implements OnInit {
   
 
   ngOnInit(): void {
+    
+    this.path="images"
+    this.ds.initialiseImages(this.path);
+    this.initialiseImageDetailsList()
+
+    if(sessionStorage.getItem('user')==null)
+    {
+      this.router.navigateByUrl("");
+    }
+  }
+
+  path ;
+
+  initialiseImageDetailsList()
+  {
     this.ds.imageDetailsList.snapshotChanges().subscribe(
       list => {
         this.imageDetailsList=[]
@@ -25,11 +40,14 @@ export class AdminComponent implements OnInit {
         })
       }
     )
+    
+  }
 
-    if(sessionStorage.getItem('user')==null)
-    {
-      this.router.navigateByUrl("");
-    }
+  onClickShowButtons(name)
+  {
+    this.path=name;
+    this.ds.initialiseImages(name)
+    this.initialiseImageDetailsList();
   }
 
 
@@ -39,6 +57,7 @@ export class AdminComponent implements OnInit {
 
   routeToAdminImage(index){
     //console.log(index)
+    this.ds.setPath(this.path);
     this.router.navigateByUrl("/admin/"+index);
   }
 }

@@ -13,11 +13,13 @@ export class ImageDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     let id=this.ar.snapshot.params.id;
-
-    this.ds.getImagebyId(id).snapshotChanges().subscribe(
+    let path=this.ar.snapshot.url[0].path;
+  
+    this.ds.getImagebyId(path, id).snapshotChanges().subscribe(
       item =>{ 
         this.image = item.payload.val()
         this.id=item.key
+        this.path = path
         //console.log(this.image)
       }
     )
@@ -26,6 +28,7 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   image;
+  path;
   id;
   submitted;
   commentClick 
@@ -37,7 +40,7 @@ export class ImageDisplayComponent implements OnInit {
   submitComment(ref){
     this.submitted = true
     this.image.comments.push(ref.value)
-    this.ds.updateComment(this.id,this.image.comments);
+    this.ds.updateComment(this.path, this.id,this.image.comments);
   }
 
   cancel()

@@ -15,7 +15,8 @@ export class AdminImageDisplayComponent implements OnInit {
     // We need to get ID from URL 
     let id=this.ar.snapshot.params.id
 
-    this.ds.getImagebyId(id).snapshotChanges().subscribe(
+    let path=this.ds.path;
+    this.ds.getImagebyId(path,id).snapshotChanges().subscribe(
       item =>{ 
         this.image = item.payload.val()
         this.id=item.key

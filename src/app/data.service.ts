@@ -15,6 +15,12 @@ export class DataService {
   imageDetailsList : AngularFireList<any>
   imageDetailsObj !: AngularFireObject<any>;
   isLoggedin : boolean = false;
+  path ;
+
+  setPath(path)
+  {
+    this.path=path
+  }
   
   async logIn(username:string, password:string) {
     await this.firebaseAuth.signInWithEmailAndPassword(username, password)
@@ -27,16 +33,16 @@ export class DataService {
     })
   }
 
-  uploadImage(image){
+  uploadImage(image,uploadTo){
     var copyimage = {...image}
 
-    var filepath = `images/${copyimage.title}_${new Date().getTime()}`
+    var filepath = `${uploadTo}/${copyimage.title}_${new Date().getTime()}`
     const fileRef = this.storage.ref(filepath)
     this.storage.upload(filepath,copyimage.src).snapshotChanges().pipe(
       finalize(()=>{
         fileRef.getDownloadURL().subscribe(url=>{
           copyimage.src=url;
-                
+          this.initialiseImages(uploadTo)
           //console.log(copyimage)
           this.imageDetailsList.push(copyimage);  
         })
@@ -45,23 +51,23 @@ export class DataService {
 
   }
 
-  initialiseImages(){
-    this.imageDetailsList=this.database.list('imageDetails')
+  initialiseImages(url){
+    this.imageDetailsList=this.database.list(`${url}`)
   }
 
-  getImagebyId(id){
-    return this.database.object('/imageDetails/'+id)
+  getImagebyId(path:any, id:any){
+    return this.database.object(`/${path}/${id}`)
   }
 
   updateImageDesc(id:any, dsc:any) {
-    this.imageDetailsObj = this.database.object('imageDetails/'+id);
+    this.imageDetailsObj = this.database.object(`${this.path}/${id}`);
     this.imageDetailsObj.update({
       description : dsc
     })
   }
 
   deleteImageDetails(id : any) {
-    this.imageDetailsObj = this.database.object('imageDetails/'+id);
+    this.imageDetailsObj = this.database.object(`${this.path}/${id}`);
     this.imageDetailsObj.remove();
   }
 
@@ -75,8 +81,8 @@ export class DataService {
   }
 
 
-   updateComment(id, comments){
-     this.imageDetailsObj = this.database.object('imageDetails/'+id);
+   updateComment(path,id, comments){
+     this.imageDetailsObj = this.database.object(`${path}/${id}`);
      this.imageDetailsObj.update({
        comments : comments
      })
